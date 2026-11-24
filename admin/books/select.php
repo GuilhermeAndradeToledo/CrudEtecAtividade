@@ -25,25 +25,32 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </tr>
 
 
-<?php
-    foreach ($books as $book): 
-?>
-<tr>
-    <td><?php echo $book['id']; ?></td>
-    <td><?php echo $book['title']; ?></td>
-    <td><?php echo $book['subtitle']; ?></td>
-    <td><?php echo $book['description']; ?></td>
-    <td><img src="../../uploads/<?php echo $book['image']; ?>" alt="<?php echo $book['title']; ?>" width="100"></td>
-    <td><?php echo $book['slug']; ?></td>
-    <td><?php echo $book['status']; ?></td>
-    <td>
-        <a href="formupdate.php?id=<?php echo $book['id']; ?>">Editar</a>
-        <a href="delete.php?id=<?php echo $book['id']; ?>">Excluir</a>
-    </td>
-</tr>
-<?php 
+    <?php
+    foreach ($books as $book):
+    ?>
+        <tr>
+            <td><?php echo $book['id']; ?></td>
+            <td><?php echo $book['title']; ?></td>
+            <td><?php echo $book['subtitle']; ?></td>
+            <td><?php echo $book['description']; ?></td>
+            <td>
+
+                <?php
+                if (!empty($book['image']) && file_exists('../../uploads/' . $book['image'])) { ?>
+                    <img src="../../uploads/<?php echo $book['image']; ?>" alt="<?php echo $book['title']; ?>" width="100">
+                <?php  }
+                ?>
+            </td>
+            <td><?php echo $book['slug']; ?></td>
+            <td><?php echo $book['status']; ?></td>
+            <td>
+                <a href="formupdate.php?id=<?php echo $book['id']; ?>">Editar</a>
+                <a href="delete.php?id=<?php echo $book['id']; ?>">Excluir</a>
+            </td>
+        </tr>
+    <?php
     endforeach;
-?>
+    ?>
 </table>
 
 <?php

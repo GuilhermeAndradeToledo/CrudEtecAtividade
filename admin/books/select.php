@@ -33,7 +33,7 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <td><?php echo $book['title']; ?></td>
     <td><?php echo $book['subtitle']; ?></td>
     <td><?php echo $book['description']; ?></td>
-    <td><?php echo $book['image']; ?></td>
+    <td><img src="../../uploads/<?php echo $book['image']; ?>" alt="<?php echo $book['title']; ?>" width="100"></td>
     <td><?php echo $book['slug']; ?></td>
     <td><?php echo $book['status']; ?></td>
     <td>

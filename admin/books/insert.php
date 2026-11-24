@@ -26,7 +26,8 @@ $stmt ->bindValue(':slug', $post['slug']);
 $stmt ->bindValue(':status', $post['status']);
 
 $stmt->execute();
-
+header('Location: ' . BASE_URL . 'admin/books/index.php');
+die();
 
 
 
